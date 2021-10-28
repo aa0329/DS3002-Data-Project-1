@@ -13,6 +13,8 @@ else:
     with open(url) as csvDataFile:
     # read file as csv file 
         csvReader = csv.reader(csvDataFile)
+        # Source: https://stackoverflow.com/questions/11310248/find-number-of-columns-in-csv-file
+        ncol = len(next(csvReader)) # Read first line and count columns
 
 
 # Operation 2: Convert the general format and data structure of the data source (from CSV to JSON)
@@ -21,6 +23,7 @@ else:
 data = []
 # JSON file saved locally 
 jsonFile = r'Happiness.json'  
+rowCount = 0
 if os.path.exists(url) == False:
     print("JSON file path does not exist.")
 # read the csv file 
@@ -31,8 +34,13 @@ with open(url) as original:
     # add each dict element to the list 
     for row in csvReader:
         data.append(row)
+        rowCount = rowCount + 1
     # Convert python list to JSON 
 with open(jsonFile, 'w', encoding='utf-8') as json_file:
     json_file.write(json.dumps(data, indent=5))
+
+print("This is a brief summary of the data file ingestion:")
+print("The number of rows in this file is: " + str(rowCount))
+print("The number of columns in this file is: " + str(ncol))
   
 
