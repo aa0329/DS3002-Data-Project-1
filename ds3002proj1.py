@@ -2,13 +2,17 @@
 import csv
 # load json
 import json
+import os.path
 
 # Operation 1: Fetch / download / retrieve a remote data file by ingesting a local file
 # open file for reading 
 url = 'world-happiness-report-2019.csv'
-with open(url) as csvDataFile:
-# read file as csv file 
-    csvReader = csv.reader(csvDataFile)
+if os.path.exists(url) == False:
+    print("CSV file path does not exist.")
+else:
+    with open(url) as csvDataFile:
+    # read file as csv file 
+        csvReader = csv.reader(csvDataFile)
 
 
 # Operation 2: Convert the general format and data structure of the data source (from CSV to JSON)
@@ -17,6 +21,8 @@ with open(url) as csvDataFile:
 data = []
 # JSON file saved locally 
 jsonFile = r'Happiness.json'  
+if os.path.exists(url) == False:
+    print("JSON file path does not exist.")
 # read the csv file 
 with open(url) as original:
     # Create an object that operates like a regular reader but maps the information in each row to a dict whose keys are given by the optional fieldnames parameter.
