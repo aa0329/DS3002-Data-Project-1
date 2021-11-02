@@ -1,6 +1,4 @@
-# load cvs module 
 import csv
-# load json
 import json
 import os.path
 
@@ -39,6 +37,7 @@ with open(url) as original:
 with open(jsonFile, 'w', encoding='utf-8') as json_file:
     json_file.write(json.dumps(data, indent=5))
 
+# Operation 3: Generate a brief summary of the data file ingestion
 print("This is a brief summary of the data file ingestion:")
 print("The number of rows in this file is: " + str(rowCount))
 print("The number of columns in this file is: " + str(ncol))
