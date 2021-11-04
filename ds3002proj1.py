@@ -34,10 +34,12 @@ with open(url) as original:
         data.append(row)
         rowCount = rowCount + 1
     # Convert python list to JSON 
+
+# Operation 4: The converted (new) file should be written to disk
 with open(jsonFile, 'w', encoding='utf-8') as json_file:
     json_file.write(json.dumps(data, indent=5))
 
-# Operation 3: Generate a brief summary of the data file ingestion
+# Operation 5: Generate a brief summary of the data file ingestion
 print("This is a brief summary of the data file ingestion:")
 print("The number of rows in this file is: " + str(rowCount))
 print("The number of columns in this file is: " + str(ncol))
